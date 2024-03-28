@@ -1,0 +1,90 @@
+Name: Baiqi Jiang
+Email: baiqi@bu.edu
+No partner(s), self work
+
+puzzles with 5-move optimal solutions
+-------------------------------------
+algorithm                	num. solved    avg. moves    avg. states tested
+------------------------------------------------------------------------------------
+random				    10		   5		    55.0
+BFS				    10             5                47.9
+DFS (depth limit 20)	            10             16.2             19072.7  
+DFS (depth limit 50)	            10	           48.2             49043.0
+Greedy Search (using h1)            10	           5.4	            70.3
+A* (using h1)		            10		   5		    6.5
+
+
+puzzles with 10-move optimal solutions
+-------------------------------------
+algorithm                	num. solved    avg. moves    avg. states tested
+------------------------------------------------------------------------------------
+random				    10		   11.6		    4052。0
+BFS				    10             10               720.7
+DFS (depth limit 20)	            10             18.8             24858.0 
+DFS (depth limit 50)	            10	           49.2             92287.3
+Greedy Search (using h1)            10	           97.6	            7422.7
+A* (using h1)		            10		   10		    27.3
+
+puzzles with 15-move optimal solutions
+-------------------------------------
+algorithm                	num. solved    avg. moves    avg. states tested
+------------------------------------------------------------------------------------
+random				    6		   17.0		    20411.0
+BFS				    9              15.0             11705.5
+DFS (depth limit 20)	            10             17.8             68659.0 
+DFS (depth limit 50)	            10	           48.6             111406.0
+Greedy Search (using h1)            6	           90.3             2718。0
+A* (using h1)		            10	   	   15.0	    	    313.8
+
+
+First of all, I want to say this is a very interesting project! The differences between these algorithms were clearly observed by looking at the puzzles with the different optimal moves required. First, in general, all algorithms will result in an increase in operation time as the number of moves increases. Random, as a completely random algorithm, has the least effect. BFS, due to its wide area search mode, it advances in a progressive manner, which results in a slower speed, this is well reflected in our data. DFS, on the other hand, prioritizes depth as the highest priority, which will help it find solutions faster. However, if the depth limit we set is too large, it may get stuck in the deep search process and require me to manually stop it. Greedy and A* : Both algorithms are based on heuristic algorithms, so they are much more effective than other algorithms, but they are limited by heuristic functions. Our h1 is not very effective, but it is enough to solve the current problem. There's just one thing I don't quite understand. According to the way Greedy and A* work, Greedy should take less time and test less states to find a solution, but the solution is not necessarily the optimal solution in the global state. A* should take more time and test more states but it will find the best solution in the global state. However, my results were completely opposite to the expected results.
+
+
+heuristic h2
+------------
+Instead of using num_mistached(), this heuristic function uses the Manhattan distance as a parameter. Our first encounter with Manhattan distance should have been during DNA computing, which can be used to calculate the shortest path (which is particularly helpful for map navigation software). Therefore, it should be able to help the algorithms to find the optimal solution more effectively.
+
+puzzles with 18-move optimal solutions
+--------------------------------------
+algorithm              		num. solved    avg. moves    avg. states tested
+------------------------------------------------------------------------------------
+Greedy (heuristic h1)		   7 		 133.7		     4594.0
+Greedy (heuristic h2)		   10	         76.2		     725.7
+A* (heuristic h1)	           10		 18.0		     1602.0
+A* (heuristic h2)		   10		 18.0		     239.3
+
+puzzles with 21-move optimal solutions
+--------------------------------------
+algorithm              		num. solved    avg. moves    avg. states tested
+------------------------------------------------------------------------------------
+Greedy (heuristic h1)		   4 		 109.0		     416.5
+Greedy (heuristic h2)		   10	         75.4		     370.7
+A* (heuristic h1)	           10		 21.0		     6301.7
+A* (heuristic h2)		   10		 21.0	    	     482.3
+
+puzzles with 24-move optimal solutions
+--------------------------------------
+algorithm              		num. solved    avg. moves    avg. states tested
+------------------------------------------------------------------------------------
+Greedy (heuristic h1)		   6		 123.7		     2856.2
+Greedy (heuristic h2)		   10	         75.2		     593.3
+A* (heuristic h1)	           6		 123.7		     2856.2
+A* (heuristic h2)		   10		 24.0	    	     1065.5
+
+puzzles with 27-move optimal solutions
+--------------------------------------
+algorithm              		num. solved    avg. moves    avg. states tested
+------------------------------------------------------------------------------------
+Greedy (heuristic h1)		   4		 197.5	     	     4285.5 
+Greedy (heuristic h2)		   10	         90.8		     693.9
+A* (heuristic h1)	           6		 123.7		     2856.2
+A* (heuristic h2)		   10		 27.0	    	     5043.0
+
+I am glad to see that the heuristic function I have written performs much better than h1! This indicates that I still remember the purpose of the Manhattan distance I learned before. It has been proven that Manhattan Distance has successfully helped two algorithms solve puzzles more efficiently. Not only can they solve all puzzles perfectly, but the number of states and computation time required are also much smaller!
+
+
+
+
+
+
+
